@@ -241,5 +241,44 @@ When logging back on to Client-1. Now you will sign in with the Admin credential
 
 <img src="https://imgur.com/QQtQiAz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
+The next step is to create a bunch of additional users. Then attempt to login with one of the many users created.
+  - Go over to DC-1, should still be opened. If not, log back in using the admin account made.
+  - Below in the menu, search for "Powershell ISE"
+  - Before opening, right click on power sheel and select "Run as Administrator"
+
+<img src="https://imgur.com/DcNeixI.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+Using this link (https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1)
+  - Copy the file
+  - In powershell, open a new script
+  - Paste the file into the new script
+  - Run the script
+  - You will see 10,000 random users being generated
+
+<img src="https://imgur.com/dUVSEGd.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/K8r1OU9.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+Going back to "Active Directory Users and Computers"
+  - Go to "_EMPLOYEES"
+  - Double click on any of the random users generated"
+  - You will their properties go to the "Account" tab
+  - Copy the user logon name
+
+
+<img src="https://imgur.com/KbpIwCH.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+Go back to the Client-1 VM and logout of the current account
+
+Sign back in to the VM 
+  - type in "mydomain.com\" then paste the name of the random user.
+  - All users were generated to use the password "Password1"
+  - Attempt to login
+
+<img src="https://imgur.com/S9BiPdn.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+If you see this screen you have successfully logged in to the random generated user's account on the Client-1 VM.
+
+<img src="https://imgur.com/TdmVSm7.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
 </p>
 <p>
