@@ -131,5 +131,115 @@ Once logged out, log back in to the DC-1 VM.
       - Password:**************
 
 <img src="https://imgur.com/khVGzXj.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+Log back in to DC-1 and in the menu type "Active Directory Users and Computers".
+
+<img src="https://imgur.com/k7jn3ZD.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+On the left hand side, depending what you named your domain. You will see "mydomain.com"
+  - Right click the tab
+  - Select "New"
+  - Select "Organizational Unit"
+
+<img src="https://imgur.com/OtuqJcv.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+You will create two Organizational Units
+  - _EMPLOYEES
+  - _ADMINS
+
+<img src="https://imgur.com/vJbHfEA.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/L75ndoc.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+Once made click on the _ADMINS tab and in the big empty space you will right click. Select "NEW" then select "user".
+
+<img src="https://imgur.com/kjhDouy.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+Fill in the information accordinglly
+
+When you get to the password page
+  - Make sure that the change password box is no longer checked.
+  - Check the password never expires box
+  - create the user
+
+<img src="https://imgur.com/K7hwISA.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/PCJ5018.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+You have now created your first user. Although he is in the _ADMINS tab, that holds no meaning. We still have to promote him to be an admin. Right click on his name and go to the "Properties" option
+
+<img src="https://imgur.com/GfKh4Nn.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+When looking at the User's properties:
+  - go to the "Member of" tab
+  - Click on "Add"
+  - Type "domain" select check names. Click on "Domain admins"
+  - Select "OK"
+  - Select "Apply", then "OK"
+
+<img src="https://imgur.com/3vDUsii.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+That user is now an admin. When logging on to the DC-1 as an admin, you will fill in the username similar to the one below.
+
+<img src="https://imgur.com/kclrRWG.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+We are now going to join Client-1 to the domain.
+
+First step is to go to the Azure portal, then go to the DC-1 page
+  - Get DC-1's private IP address
+
+<img src="https://imgur.com/mNDkv6i.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+Now in the Azure Portal, go to Client-1's page
+  - Got to Network Settings
+  - Click on "Network Interface"
+
+<img src="https://imgur.com/Bd0Fh5e.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+  - Click on DNS Servers
+  - Select "Custom"
+  - Paste DC-1's private IP below (ensure there are no spaces either before or after the IP)
+  - Click "Save"
+  - Go back to Client-1's Page and select "restart"
+  - Let it completely restart before logging back on
+
+<img src="https://imgur.com/nKIJtGR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/wZTvVSl.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+Once restarted, log back on
+  - Right click the start menu
+  - Select "system"
+  - On the right, select "Rename this PC"
+
+<img src="https://imgur.com/W7TRtoD.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+  - Click "Change"
+  - Select "Domain". Type in "mydomain.com"
+  - Select "Ok", "Apply", and "Ok"
+
+<img src="https://imgur.com/QkP9Cyh.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+You will then see this screen pop up. Fill in the user/Pw with the admin account that was made.
+
+You will see a pop up that says "Welcome to the mydomain.com Domain". After you select ok you will get a few more questions and the computer will ask you to restart. Make the computer restart.
+
+<img src="https://imgur.com/b03Vb8f.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+<img src="https://imgur.com/xKRAk9h.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+When logging back on to Client-1. Now you will sign in with the Admin credentials that you made.
+
+<img src="https://imgur.com/rzvOWLE.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+
+  - Right click start menu and select "System"
+  - On the right click on "Remote Desktop"
+  - click on "Select users that can remotely access this pc"
+  - Click "Add"
+  - Type in "Domain Users"
+  - Click "Check Names"
+  - Click "Ok"
+
+<img src="https://imgur.com/YDrgR3s.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<img src="https://imgur.com/QQtQiAz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
 </p>
 <p>
